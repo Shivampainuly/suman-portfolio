@@ -1,0 +1,5 @@
+import './globals.css';
+import Link from 'next/link';
+import { CommandPalette } from '../components/CommandPalette';
+export const metadata={title:'Suman Painuly | Endpoint Engineering',description:'Endpoint Engineering Specialist focused on Intune, Autopilot, macOS/JAMF and automation.'};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><header className="nav"><div className="container navin"><Link href="/" className="mono accent">SP<span className="muted"> / endpoint</span></Link><nav className="links"><Link href="/experience">Experience</Link><Link href="/engineering">Engineering</Link><Link href="/skills">Skills</Link><Link href="/lab">Lab</Link><Link href="/contact">Contact</Link></nav><CommandPalette/></div></header>{children}<footer><div className="container"><span className="mono">suman@endpoint:~$</span> Built for engineering conversations · <span className="accent">Open to opportunities</span></div></footer></body></html>}
