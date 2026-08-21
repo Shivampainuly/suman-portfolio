@@ -1,0 +1,5 @@
+'use client';
+import {useEffect,useState} from 'react';
+import {PROFILE} from '../lib/data';
+import {MagneticButton} from './MagneticButton';
+export function HeroTerminal(){const[shown,setShown]=useState('');const text='suman@endpoint:~$ cat profile.json';useEffect(()=>{let i=0;const id=setInterval(()=>{setShown(text.slice(0,++i));if(i>=text.length)clearInterval(id)},35);return()=>clearInterval(id)},[]);return <section className="hero"><div className="container"><div className="terminal"><span className="prompt">$ </span>{shown}<span className="accent">▌</span></div><div style={{marginTop:28,maxWidth:900}}><span className="pill">AVAILABLE FOR SENIOR ENDPOINT / INTUNE ROLES</span><h1 style={{marginTop:20}}>{PROFILE.name}<br/><span className="accent">Endpoint Engineering</span></h1><p className="muted" style={{fontSize:18,maxWidth:760}}>{PROFILE.summary}</p><div style={{display:'flex',gap:12,flexWrap:'wrap',marginTop:24}}><MagneticButton href="/engineering">View Engineering Work ↗</MagneticButton><MagneticButton href="/contact">Start a Conversation</MagneticButton></div></div></div></section>}
