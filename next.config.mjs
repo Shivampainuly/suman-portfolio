@@ -1,11 +1,10 @@
-﻿/** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
+const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
 const nextConfig = {
-  output: "export",
-  basePath: "/suman-portfolio",
-  images: {
-    unoptimized: true,
-  },
+  reactStrictMode: true,
+  output: 'export',
   trailingSlash: true,
+  basePath: isGitHubPages ? '/suman-portfolio' : '',
+  assetPrefix: isGitHubPages ? '/suman-portfolio/' : '',
 };
-
 export default nextConfig;
