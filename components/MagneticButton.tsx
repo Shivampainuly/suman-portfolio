@@ -1,0 +1,5 @@
+'use client';
+import {motion,useMotionValue,useSpring} from 'framer-motion';
+import Link from 'next/link';
+import type { MouseEvent } from 'react';
+export function MagneticButton({children,href,onClick}:{children:React.ReactNode;href?:string;onClick?:()=>void}){const mx=useMotionValue(0),my=useMotionValue(0);const x=useSpring(mx,{stiffness:450,damping:28,mass:.6}),y=useSpring(my,{stiffness:450,damping:28,mass:.6});const move=(e:MouseEvent<HTMLElement>)=>{const r=e.currentTarget.getBoundingClientRect();mx.set((e.clientX-r.left-r.width/2)*.12);my.set((e.clientY-r.top-r.height/2)*.12)};const leave=()=>{mx.set(0);my.set(0)};const props={onMouseMove:move,onMouseLeave:leave,onClick};return href?<motion.div {...props} style={{x,y,display:'inline-block'}}><Link className="btn" href={href}>{children}</Link></motion.div>:<motion.button {...props} style={{x,y}} className="btn">{children}</motion.button>}
